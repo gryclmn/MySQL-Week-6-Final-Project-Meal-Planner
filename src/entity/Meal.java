@@ -49,5 +49,4 @@ public class Meal {
 		this.type = type;
 	}
 	
-	
 }
