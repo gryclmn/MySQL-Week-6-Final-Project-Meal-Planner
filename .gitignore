@@ -10,3 +10,5 @@
 # IDEA files
 *.idea
 
+.classpath
+.project
