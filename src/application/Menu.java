@@ -17,8 +17,6 @@ class Menu {
     private Scanner scanner = new Scanner(System.in);
     private List<String> options = Arrays.asList(
             "Display todays meal plan.",
-            "Display this weeks meal plan.",
-            "Recalculate a meal plan.",
             "Display all dishes.",
             "View and edit a dish.",
             "Create a dish.",
@@ -30,15 +28,6 @@ class Menu {
     private StatTrackerDao planDao = new StatTrackerDao();
 
     void start() {
-
-        StatTracker statTracker = new StatTracker();
-        System.out.println(statTracker.getDishStatById(1));
-        statTracker.increaseDishStat(1);
-        System.out.println(statTracker.getDishStatById(1));
-        statTracker.setDishStat(1, 10);
-        System.out.println(statTracker.getDishStatById(1));
-        statTracker.increaseDishStat(1);
-        System.out.println(statTracker.getDishStatById(1));
 
         String selection;
 
@@ -89,15 +78,6 @@ class Menu {
     }
 
     private void displayMealPlan() throws SQLException {
-        /* TODO - We could either pass in two arguments to get a time frame, and thus print
-            a days worth of meal planning, or multiple days worth.
-            OR we could have two seperate methods, one to print just a days worth, another
-            for printing multiple days...?
-        */
-    }
-
-    private void recalculateMealPlan() throws SQLException {
-        // TODO - Redo a specific meal plan. It may be best to get from the user which meal plan to recalculate...
 
     }
 
