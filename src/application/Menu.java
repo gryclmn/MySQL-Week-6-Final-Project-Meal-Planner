@@ -2,8 +2,9 @@ package application;
 
 import dao.DishDao;
 import dao.MealDao;
-import dao.PlanDao;
+import dao.StatTrackerDao;
 import entity.Dish;
+import entity.StatTracker;
 import utility.Printer;
 
 import java.sql.SQLException;
@@ -26,9 +27,18 @@ class Menu {
 
     private DishDao dishDao = new DishDao();
     private MealDao mealDao = new MealDao();
-    private PlanDao planDao = new PlanDao();
+    private StatTrackerDao planDao = new StatTrackerDao();
 
     void start() {
+
+        StatTracker statTracker = new StatTracker();
+        System.out.println(statTracker.getDishStatById(1));
+        statTracker.increaseDishStat(1);
+        System.out.println(statTracker.getDishStatById(1));
+        statTracker.setDishStat(1, 10);
+        System.out.println(statTracker.getDishStatById(1));
+        statTracker.increaseDishStat(1);
+        System.out.println(statTracker.getDishStatById(1));
 
         String selection;
 
