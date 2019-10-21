@@ -7,6 +7,10 @@ public class StatTracker {
 
 	private Map<Integer, Integer> dishStats = new HashMap();
 
+	public StatTracker(Map<Integer, Integer> stats) {
+		this.dishStats = stats;
+	}
+
 	public Integer getDishStatById(int id) {
 		if (dishStats.containsKey(id)) {
 			return dishStats.get(id);

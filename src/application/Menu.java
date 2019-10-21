@@ -1,12 +1,12 @@
 package application;
 
 import dao.DishDao;
-import dao.MealDao;
 import dao.StatTrackerDao;
 import entity.Dish;
+import entity.Meal;
 import entity.StatTracker;
+import services.MealService;
 import utility.Printer;
-
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -24,11 +24,11 @@ class Menu {
     );
 
     private DishDao dishDao = new DishDao();
-    private MealDao mealDao = new MealDao();
-    private StatTrackerDao planDao = new StatTrackerDao();
+    private MealService mealService = new MealService();
+    private StatTrackerDao statDao = new StatTrackerDao();
 
     void start() {
-
+        
         String selection;
 
         do {
@@ -39,17 +39,13 @@ class Menu {
                 switch (selection) {
                     case "1": displayMealPlan();
                         break;
-                    case "2": displayMealPlan();
+                    case "2": displayAllDishes();
                         break;
-                    case "3": recalculateMealPlan();
+                    case "3": displayDish();
                         break;
-                    case "4": displayAllDishes();
+                    case "4": createDish();
                         break;
-                    case "5": displayDish();
-                        break;
-                    case "6": createDish();
-                        break;
-                    case "7":
+                    case "5":
                         Printer.printAlert("Goodbye!");
                         break;
                     default:
@@ -64,7 +60,7 @@ class Menu {
             Printer.printInstructions("Press enter to continue...");
             scanner.nextLine();
 
-        } while (!selection.equals("7"));
+        } while (!selection.equals("5"));
 
     }
 
@@ -78,7 +74,25 @@ class Menu {
     }
 
     private void displayMealPlan() throws SQLException {
+        List<Meal> meals = mealService.getDaysMeals(dishDao.getAllDishes());
 
+        for (Meal meal : meals) {
+        	Printer.printSubTitle(meal.getType().toString());
+            displayMeal(meal);
+        }
+    }
+
+    private void displayMeal(Meal meal) {
+        Printer.printResponse("> Main Dish: " + meal.getMainDish().getDishName());
+        StringBuilder sides = new StringBuilder();
+        List<Dish> sideDishes = meal.getSideDishes();
+        for (int i = 0; i < sideDishes.size(); i++) {
+        	sides.append(sideDishes.get(i).getDishName());
+        	if (i < sideDishes.size() -1) {
+        		sides.append(", ");
+        	} 
+        }
+        Printer.printResponse("\tSides: " + sides.toString());
     }
 
     private void displayAllDishes() throws SQLException {
@@ -108,7 +122,7 @@ class Menu {
 
     private void printDish(Dish dish) {
         // TODO - Something like below?
-//        Printer.printResponse("#" + dish.getId() + " " + dish.getName() + ......);
+        Printer.printResponse("#" + dish.getDishId() + " " + dish.getDishName() + " " + dish.getType());
     }
 
     private void createDish() {

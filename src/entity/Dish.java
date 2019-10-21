@@ -5,9 +5,10 @@ public class Dish {
 	private String dishName;
 	private DishType type;
 	
-	Dish(Integer dishId, String dishName){
+	public Dish(Integer dishId, String dishName, DishType type){
 		this.dishName = dishName;
 		this.dishId = dishId;
+		this.type = type;
 	}
 // getters / setters
 	public Integer getDishId() {
