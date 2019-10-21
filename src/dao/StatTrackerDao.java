@@ -14,9 +14,7 @@ public class StatTrackerDao {
     private final String TABLE = "dish_stats";
     private final String GET_ALL_QUERY = "SELECT * FROM " + TABLE;
     private final String GET_BY_ID_QUERY = "SELECT count FROM " + TABLE + " WHERE id = ?";
-    private final String CREATE_NEW_QUERY = "INSERT INTO " + TABLE + " (name, quantity, price) VALUES (?, ?, ?)";
     private final String UPDATE_QUERY = "UPDATE " + TABLE + " SET count = ? WHERE id = ?";
-    private final String DELETE_QUERY = "DELETE FROM " + TABLE + " WHERE id = ?";
 
     public StatTrackerDao() {
         connection = DBConnection.getConnection();
@@ -31,7 +29,6 @@ public class StatTrackerDao {
 	            map.put(resultSet.getInt(1), resultSet.getInt(2));
 	        }
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

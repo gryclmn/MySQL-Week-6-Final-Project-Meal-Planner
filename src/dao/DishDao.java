@@ -2,7 +2,6 @@ package dao;
 
 import entity.Dish;
 import entity.DishType;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
