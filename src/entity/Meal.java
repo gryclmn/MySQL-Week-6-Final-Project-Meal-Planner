@@ -1,41 +1,33 @@
 package entity;
 
+import java.util.List;
+
 public class Meal {
-	
-	private Integer mealId;
-	private Integer mainDishId;
-	private Integer[] sideDishIds;
+
+	private Dish mainDish;
+	private List<Dish> sideDishes;
 	private MealType type;
 
-	public Meal(Integer mealId, Integer mainDishId, Integer[] sideDishIds, MealType type) {
-		this.mealId = mealId;
-		this.mainDishId = mainDishId;
-		this.sideDishIds = sideDishIds;
+	public Meal(Dish mainDish, List<Dish> sideDishes, MealType type) {
+		this.mainDish = mainDish;
+		this.sideDishes = sideDishes;
 		this.type = type;
 	}
 
-	public Integer getMealId() {
-		return mealId;
+	public Dish getMainDish() {
+		return mainDish;
 	}
 
-	public void setMealId(Integer mealId) {
-		this.mealId = mealId;
+	public void setMainDish(Dish mainDish) {
+		this.mainDish = mainDish;
 	}
 
-	public Integer getMainDishId() {
-		return mainDishId;
+	public List<Dish> getSideDishes() {
+		return sideDishes;
 	}
 
-	public void setMainDishId(Integer mainDishId) {
-		this.mainDishId = mainDishId;
-	}
-
-	public Integer[] getSideDishIds() {
-		return sideDishIds;
-	}
-
-	public void setSideDishIds(Integer[] sideDishIds) {
-		this.sideDishIds = sideDishIds;
+	public void setSideDishes(List<Dish> sideDishes) {
+		this.sideDishes = sideDishes;
 	}
 
 	public MealType getType() {
