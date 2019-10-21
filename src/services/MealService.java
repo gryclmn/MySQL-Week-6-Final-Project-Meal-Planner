@@ -28,7 +28,7 @@ public class MealService {
             });
         }
     }
-    
+  
     private Dish getMainDish() {
     	int index = getRandomNum(mainDishes.size());
         Dish mainDish = mainDishes.get(index);
@@ -65,18 +65,19 @@ public class MealService {
         return sides;
     }
 
-    public Meal getMeal(MealType type, int numOfSides) {
+    private Meal getMeal(MealType type, int numOfSides) {
         return new Meal(getMainDish(), getSideDishes(numOfSides), type);
     }
 
     public List<Meal> getDaysMeals(List<Dish> dishes) {
     	populateLists(dishes);
-        List<Meal> meals = new ArrayList<Meal>();
-        meals.add(getMeal(MealType.BREAKFAST, getRandomNum(3)));
-        meals.add(getMeal(MealType.LUNCH, getRandomNum(3)));
-        meals.add(getMeal(MealType.DINNER, getRandomNum(3)));
 
-        return meals;
+      List<Meal> meals = new ArrayList<Meal>();
+      meals.add(getMeal(MealType.BREAKFAST, getRandomNum(3)));
+      meals.add(getMeal(MealType.LUNCH, getRandomNum(3)));
+      meals.add(getMeal(MealType.DINNER, getRandomNum(3)));
+
+      return meals;
     }
 
     private int getRandomNum(int max) {
