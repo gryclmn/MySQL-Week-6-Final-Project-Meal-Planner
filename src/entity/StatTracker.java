@@ -11,10 +11,6 @@ public class StatTracker {
 		this.dishStats = stats;
 	}
 
-	public StatTracker(Map<Integer, Integer> stats) {
-		this.dishStats = stats;
-	}
-
 	public Integer getDishStatById(int id) {
 		if (dishStats.containsKey(id)) {
 			return dishStats.get(id);
