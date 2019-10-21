@@ -17,6 +17,14 @@ create table dish(
 	dish_type varchar(20) not null,
 	primary key(id)
 );
+insert into dish
+	(dish_name, dish_type)
+	values ("Cereal", "MAIN"),
+		("Pizza", "MAIN"),
+		("Lasagna", "MAIN"),
+		("Peas", "SIDE"),
+		("Corn", "SIDE"),
+		("Fries", "SIDE");
 create table meal_dish(
 	meal_id int(10) not null,
 	dish_id int(10) not null,
