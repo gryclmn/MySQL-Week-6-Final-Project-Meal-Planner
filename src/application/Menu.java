@@ -111,7 +111,10 @@ class Menu {
 
     private void displayDish() throws SQLException {
         Printer.printTitle("Dish");
-        // TODO - get specific dish from user and format its output using printDish()
+        System.out.print("enter dish id");
+        int id = Integer.parseInt(scanner.nextLine());
+        Dish dish = dishDao.getDishById(id);
+        printDish(dish);
         Printer.printSectionEnd();
         // TODO - It also may be a good idea to add options when viewing a dish to update and delete, instead of from the main menu
         /* TODO - It may be cool to track stats for a dish? ie: How many times has this dish been scheduled?
@@ -124,8 +127,12 @@ class Menu {
         Printer.printResponse("#" + dish.getDishId() + " " + dish.getDishName() + " " + dish.getType());
     }
 
-    private void createDish() {
-        // TODO - create dish
+    private void createDish() throws SQLException {
+        System.out.print("enter new dish name");
+        String dishName = scanner.nextLine();
+        System.out.print("enter dish type");
+        String dishType = scanner.nextLine();
+        dishDao.CreateNewDish(dishName, dishType);
     }
 
 }
