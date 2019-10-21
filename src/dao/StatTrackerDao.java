@@ -53,7 +53,6 @@ public class StatTrackerDao {
 
     	preparedStatement.setInt(1, getDishStat(dishId) + 1);
         preparedStatement.setInt(2, dishId);
-        System.out.println(preparedStatement.toString());
         preparedStatement.executeUpdate();
     }
 
