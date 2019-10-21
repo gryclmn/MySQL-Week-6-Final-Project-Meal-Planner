@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class StatTracker {
 
-	private Map<Integer, Integer> dishStats = new HashMap();
+	private Map<Integer, Integer> dishStats = new HashMap<Integer, Integer>();
+
+	public StatTracker(Map<Integer, Integer> stats) {
+		this.dishStats = stats;
+	}
 
 	public StatTracker(Map<Integer, Integer> stats) {
 		this.dishStats = stats;
